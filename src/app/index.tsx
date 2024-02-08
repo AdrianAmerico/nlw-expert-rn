@@ -1,14 +1,14 @@
 import { useState, useRef, useMemo } from "react";
 import { View, FlatList, SectionList, Text } from "react-native";
 import { CategoryButton, Header, Product } from "@/components";
-import { CATEGORIES, MENU } from "@/utils/data/products";
+import { CATEGORIES, MENU, ProductProps } from "@/utils/data/products";
 import { Link } from "expo-router";
 import { useCartStore } from "@/stores";
 
 const Home = () => {
   const cartStore = useCartStore();
   const [category, setCategory] = useState(CATEGORIES[0]);
-  const sectionListRef = useRef<SectionList>(null);
+  const sectionListRef = useRef<SectionList<ProductProps>>(null);
 
   const handleCategorySelected = (selectedCategory: string) => {
     setCategory(selectedCategory);
